@@ -8,11 +8,6 @@ import com.natera.graph.model.GenEdge;
 import com.natera.graph.model.algo.BFSGraphTraversal;
 import com.natera.graph.model.algo.IGraphAlgorithm;
 
-/**
- * Preferred to use main methods instead of using JUnit because executable files
- * such as the JUnit jar file, might not be able to download it from my email.
- * 
- */
 public class UnDirectedGraphTest {
 
 	public static void main(String[] args){
