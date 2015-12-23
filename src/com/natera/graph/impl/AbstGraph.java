@@ -20,13 +20,12 @@ import com.natera.graph.util.GraphFactory;
  */
 public abstract class AbstGraph<T> implements IGraph<T>{
 
-	protected Map<GenVertex<T>, List<GenEdge<T>>> graphRep;
-	protected Map<T, GenVertex<T>> vertexMap;
-	protected IGraphAlgorithm<T> graphAlgorithm;
+	protected final Map<GenVertex<T>, List<GenEdge<T>>> graphRep = new HashMap<GenVertex<T>, List<GenEdge<T>>>();
+	protected final Map<T, GenVertex<T>> vertexMap = new HashMap<T, GenVertex<T>>();
+	protected final IGraphAlgorithm<T> graphAlgorithm;
 	
-	public AbstGraph() {
-		graphRep = new HashMap<GenVertex<T>, List<GenEdge<T>>>();
-		vertexMap = new HashMap<T, GenVertex<T>>();	
+	public AbstGraph(IGraphAlgorithm<T> graphAlgorithm) {
+		this.graphAlgorithm = graphAlgorithm;
 	}
 	
 	@Override	
@@ -68,9 +67,5 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 	
 	public IGraphAlgorithm<T> getGraphAlgorithm() {
 		return graphAlgorithm;
-	}
-
-	public void setGraphAlgorithm(IGraphAlgorithm<T> graphAlgorithm) {
-		this.graphAlgorithm = graphAlgorithm;
 	}
 }
