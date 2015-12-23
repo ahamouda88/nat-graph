@@ -5,7 +5,6 @@ import java.util.List;
 import com.natera.graph.impl.inter.IUnweightedGraph;
 import com.natera.graph.model.GenEdge;
 import com.natera.graph.model.GenVertex;
-import com.natera.graph.model.algo.BFSGraphTraversal;
 import com.natera.graph.model.algo.IGraphAlgorithm;
 
 /**
