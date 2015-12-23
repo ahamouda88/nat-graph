@@ -15,15 +15,9 @@ import com.natera.graph.model.algo.IGraphAlgorithm;
  * @param <T> vertex type.
  */
 public class DirectedGraph<T> extends AbstGraph<T> implements IUnweightedGraph<T> {
-		
-	public DirectedGraph() {
-		super();
-		graphAlgorithm = new BFSGraphTraversal<T>();
-	}
 	
 	public DirectedGraph(IGraphAlgorithm<T> graphAlgorithm) {
-		super();
-		this.graphAlgorithm = graphAlgorithm;
+		super(graphAlgorithm);
 	}
 	
 	@Override
