@@ -17,11 +17,7 @@ public final class GraphFactory {
 	 * @return new created vertex. Returns <tt>null</tt> if data is null.
 	 */
 	public static <T> GenVertex<T> createVertex(T data){
-		GenVertex<T> newVertex = null;
-		if(data != null){
-			newVertex = new GenVertex<T>(data);
-		}
-		return newVertex;
+		return data != null ? new GenVertex<T>(data) : null;
 	}
 	
 	/**
@@ -33,10 +29,8 @@ public final class GraphFactory {
 	 * @return new created unweighted edge. Returns <tt>null</tt> any given data is null.
 	 */
 	public static <T> GenEdge<T> createUnweightedEdge(GenVertex<T> vertex1, GenVertex<T> vertex2){
-		GenEdge<T> newEdge = null;
-		if(vertex1 != null && vertex2 != null){
-			newEdge = new GenEdge<T>(vertex1, vertex2);
-		}
+		ParametersUtil.checkNullParameters(vertex1, vertex2);
+		GenEdge<T> newEdge = new GenEdge<T>(vertex1, vertex2);
 		return newEdge;
 	}
 	
@@ -50,10 +44,8 @@ public final class GraphFactory {
 	 * @return new created weighted edge.
 	 */
 	public static <T> WeightedEdge<T> createWeightedEdge(GenVertex<T> vertex1, GenVertex<T> vertex2, double weight){
-		WeightedEdge<T> newEdge = null;
-		if(vertex1 != null && vertex2 != null){
-			newEdge = new WeightedEdge<T>(vertex1, vertex2, weight);
-		}
+		ParametersUtil.checkNullParameters(vertex1, vertex2);
+		WeightedEdge<T> newEdge = new WeightedEdge<T>(vertex1, vertex2, weight);
 		return newEdge;
 	}
 }
