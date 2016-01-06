@@ -10,6 +10,7 @@ import com.natera.graph.model.GenEdge;
 import com.natera.graph.model.GenVertex;
 import com.natera.graph.model.algo.IGraphAlgorithm;
 import com.natera.graph.util.GraphFactory;
+import com.natera.graph.util.ParametersUtil;
 
 /**
  * The <tt>AbstGraph</tt> abstract class is responsible for implementing 
@@ -31,10 +32,9 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 	@Override	
 	public boolean addVertex(T data) throws NullPointerException{
 		boolean result = false;
+		ParametersUtil.checkNullParameters(data);
+		
 		// Checking if vertex already exists.
-		if(data == null){
-			throw new NullPointerException("Given data is Null!");
-		}
 		if(!vertexMap.containsKey(data)){
 			GenVertex<T> vertex = GraphFactory.createVertex(data);
 			if(vertex != null){

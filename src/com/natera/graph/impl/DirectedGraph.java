@@ -6,6 +6,7 @@ import com.natera.graph.impl.inter.IUnweightedGraph;
 import com.natera.graph.model.GenEdge;
 import com.natera.graph.model.GenVertex;
 import com.natera.graph.model.algo.IGraphAlgorithm;
+import com.natera.graph.util.ParametersUtil;
 
 /**
  * The <tt>DirectedGraph</tt> class represents a graph with directed and unweighted edges.
@@ -22,14 +23,12 @@ public class DirectedGraph<T> extends AbstGraph<T> implements IUnweightedGraph<T
 	@Override
 	public boolean addEdge(T srcData, T destData) throws NullPointerException{
 		boolean result = false;
-		if(srcData != null && destData != null){
-			GenVertex<T> srcVertex = validateVertex(srcData);
-			GenVertex<T> destVertex = validateVertex(destData);
-			
-			result = this.addEdgeToVertex(srcVertex, destVertex);
-		}else{
-			throw new NullPointerException("Either Source Data or Destination Data is Null!");
-		}
+		ParametersUtil.checkNullParameters(srcData, destData);
+		
+		GenVertex<T> srcVertex = validateVertex(srcData);
+		GenVertex<T> destVertex = validateVertex(destData);			
+		result = this.addEdgeToVertex(srcVertex, destVertex);
+		
 		return result;
 	}
 
