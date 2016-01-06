@@ -30,8 +30,7 @@ public final class GraphFactory {
 	 */
 	public static <T> GenEdge<T> createUnweightedEdge(GenVertex<T> vertex1, GenVertex<T> vertex2){
 		ParametersUtil.checkNullParameters(vertex1, vertex2);
-		GenEdge<T> newEdge = new GenEdge<T>(vertex1, vertex2);
-		return newEdge;
+		return new GenEdge<T>(vertex1, vertex2);
 	}
 	
 	/**
@@ -45,7 +44,6 @@ public final class GraphFactory {
 	 */
 	public static <T> WeightedEdge<T> createWeightedEdge(GenVertex<T> vertex1, GenVertex<T> vertex2, double weight){
 		ParametersUtil.checkNullParameters(vertex1, vertex2);
-		WeightedEdge<T> newEdge = new WeightedEdge<T>(vertex1, vertex2, weight);
-		return newEdge;
+		return new WeightedEdge<T>(vertex1, vertex2, weight);
 	}
 }
