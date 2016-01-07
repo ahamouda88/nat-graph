@@ -35,11 +35,11 @@ public class DirectedGraph<T> extends AbstGraph<T> implements IUnweightedGraph<T
 	@Override
 	public List<GenEdge<T>> getPath(T srcData, T destData) {
 		List<GenEdge<T>> listOfEdges = null;
-		if(srcData != null && destData != null){
-			GenVertex<T> vertex1 = vertexMap.get(srcData);
-			GenVertex<T> vertex2 = vertexMap.get(destData);
-			listOfEdges = graphAlgorithm.traverseGraph(vertex1, vertex2, graphRep);
-		}
+		ParametersUtil.checkNullParameters(srcData, destData);
+		
+		GenVertex<T> vertex1 = vertexMap.get(srcData);
+		GenVertex<T> vertex2 = vertexMap.get(destData);
+		listOfEdges = graphAlgorithm.traverseGraph(vertex1, vertex2, graphRep);
 		return listOfEdges;
 	}
 	
