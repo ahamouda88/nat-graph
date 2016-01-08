@@ -20,8 +20,8 @@ import com.natera.graph.util.ParametersUtil;
  */
 public class BFSGraphTraversal<T> implements IGraphAlgorithm<T>{
 
-	private Queue<GenVertex<T>> queue;
-	private Set<GenVertex<T>> visited;
+	private final Queue<GenVertex<T>> queue;
+	private final Set<GenVertex<T>> visited;
 	
 	public BFSGraphTraversal() {
 		queue = new LinkedList<GenVertex<T>>();
@@ -29,7 +29,7 @@ public class BFSGraphTraversal<T> implements IGraphAlgorithm<T>{
 	}
 	
 	@Override
-	public List<GenEdge<T>> traverseGraph(GenVertex<T> source, GenVertex<T> destination, 
+	public synchronized List<GenEdge<T>> traverseGraph(GenVertex<T> source, GenVertex<T> destination, 
 			Map<GenVertex<T>, List<GenEdge<T>>> graphRep) {
 		
 		ParametersUtil.checkNullParameters(source, destination, graphRep);
