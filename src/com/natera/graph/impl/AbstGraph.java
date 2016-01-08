@@ -30,7 +30,7 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 	}
 	
 	@Override	
-	public boolean addVertex(T data) throws NullPointerException{
+	public synchronized boolean addVertex(T data) throws NullPointerException{
 		boolean result = false;
 		ParametersUtil.checkNullParameters(data);
 		
@@ -46,7 +46,7 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 		return result;
 	}
 	
-	protected GenVertex<T> validateVertex(T data){
+	protected synchronized GenVertex<T> validateVertex(T data){
 		GenVertex<T> vertex = vertexMap.get(data);
 		if(vertex == null){
 			addVertex(data);
@@ -55,7 +55,7 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 		return vertex;
 	}
 	
-	protected boolean addEdgeToVertex(GenVertex<T> srcVertex, GenVertex<T> destVertex){
+	protected synchronized boolean addEdgeToVertex(GenVertex<T> srcVertex, GenVertex<T> destVertex){
 		boolean result = false;
 		GenEdge<T> newEdge = GraphFactory.createUnweightedEdge(srcVertex, destVertex);
 		if(newEdge != null){
