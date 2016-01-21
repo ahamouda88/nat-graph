@@ -22,20 +22,18 @@ public class DirectedGraph<T> extends AbstGraph<T> implements IUnweightedGraph<T
 	
 	@Override
 	public boolean addEdge(T srcData, T destData) throws NullPointerException{
-		boolean result = false;
-		
+		boolean result = false;		
 		GenVertex<T> srcVertex = validateVertex(srcData);
 		GenVertex<T> destVertex = validateVertex(destData);			
 		result = this.addEdgeToVertex(srcVertex, destVertex);
-		
 		return result;
 	}
 
 	@Override
-	public List<GenEdge<T>> getPath(T srcData, T destData) {
-		List<GenEdge<T>> listOfEdges = null;
+	public List<GenEdge<T>> getPath(T srcData, T destData) {		
 		ParametersUtil.checkNullParameters(srcData, destData);
 		
+		List<GenEdge<T>> listOfEdges = null;
 		GenVertex<T> vertex1 = vertexMap.get(srcData);
 		GenVertex<T> vertex2 = vertexMap.get(destData);
 		listOfEdges = graphAlgorithm.traverseGraph(vertex1, vertex2, graphRep);

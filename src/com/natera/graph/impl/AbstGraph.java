@@ -47,6 +47,8 @@ public abstract class AbstGraph<T> implements IGraph<T>{
 	}
 	
 	protected synchronized GenVertex<T> validateVertex(T data){
+		ParametersUtil.checkNullParameters(data);
+		
 		GenVertex<T> vertex = vertexMap.get(data);
 		if(vertex == null){
 			addVertex(data);
