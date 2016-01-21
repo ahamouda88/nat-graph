@@ -23,7 +23,6 @@ public class DirectedGraph<T> extends AbstGraph<T> implements IUnweightedGraph<T
 	@Override
 	public boolean addEdge(T srcData, T destData) throws NullPointerException{
 		boolean result = false;
-		ParametersUtil.checkNullParameters(srcData, destData);
 		
 		GenVertex<T> srcVertex = validateVertex(srcData);
 		GenVertex<T> destVertex = validateVertex(destData);			
